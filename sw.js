@@ -3,10 +3,10 @@
 //   → GitHub에 올리기만 하면 앱에도 바로 반영. 버전 숫자 바꿀 필요 없음
 // · three.js (lib/ 에 직접 올려둠 + CDN 예비) / firebase 스크립트 / 폰트: 저장본 먼저 (잘 안 바뀌고 무거움)
 // · 파이어베이스 실시간 통신(멀티/랭킹)은 건드리지 않는다
-const VERSION = 'playhub-edu-v1';
+const VERSION = 'playhub-edu-v2';
 const CORE = [
   './', 'hub.html', 'index.html', 'multiplayer.js', 'manifest.json', 'lib/three.r128.min.js', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png', 'favicon-32.png',
-  'quiz.html', 'wordle.html', 'math.html', 'wordchain.html', 'piano.html', 'words5.txt',
+  'quiz.html', 'wordle.html', 'math.html', 'meteor.html', 'wordchain.html', 'piano.html', 'words5.txt',
 ];
 const CDN = /^https:\/\/(cdnjs\.cloudflare\.com|cdn\.jsdelivr\.net|www\.gstatic\.com\/firebasejs|fonts\.googleapis\.com|fonts\.gstatic\.com)/;
 
