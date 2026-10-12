@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#5b4cff">
+<title>PlayHub 에듀</title>
+<link rel="icon" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#f3f5ff; --card:#ffffff; --ink:#1b2246; --sub:#5f6893; --line:#e2e6f7; --acc:#5b4cff; --acc2:#7d6bff; --gold:#ffb52e; --ok:#22b86a;
+    --disp:"Black Han Sans","Fredoka",Inter,sans-serif; --num:"Fredoka",Inter,sans-serif; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; background:var(--bg); color:var(--ink); font-family:'Pretendard','Noto Sans KR','Malgun Gothic',system-ui,sans-serif; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font:inherit; color:inherit; border:none; background:none; cursor:pointer; }
+  svg.i{ width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+
+  header{ position:sticky; top:0; z-index:20; background:rgba(243,245,255,.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .bar{ max-width:1180px; margin:0 auto; height:64px; display:flex; align-items:center; gap:12px; padding:0 16px; }
+  .logo{ display:flex; align-items:center; gap:10px; font:400 22px/1 var(--disp); color:var(--ink); }
+  .logo svg{ width:38px; height:38px; }
+  .logo small{ font:700 12px/1 var(--num); color:var(--acc); background:#ebe8ff; padding:4px 8px; border-radius:99px; }
+  .sp{ flex:1; }
+  .tbtn{ height:40px; padding:0 14px; border-radius:12px; background:#fff; border:1px solid var(--line); display:flex; align-items:center; gap:7px; font-weight:800; font-size:14px; }
+  .tbtn:hover{ border-color:#c9cff0; }
+  .me{ display:flex; align-items:center; gap:10px; padding:5px 12px 5px 5px; border-radius:99px; background:#fff; border:1px solid var(--line); }
+  .me img{ width:40px; height:40px; border-radius:50%; background:#e8ebff; }
+  .me b{ display:block; font-size:14px; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .me .lv{ display:flex; align-items:center; gap:6px; font:700 11.5px/1 var(--num); color:var(--sub); }
+  .me .lv i{ display:block; width:60px; height:6px; border-radius:6px; background:#e8ebff; overflow:hidden; } .me .lv i span{ display:block; height:100%; background:linear-gradient(90deg,var(--acc),#a08bff); }
+
+  main{ max-width:1180px; margin:0 auto; padding:20px 16px 60px; }
+  .hero{ display:grid; grid-template-columns:1.5fr 1fr; gap:16px; }
+  .hcard{ border-radius:24px; padding:24px; position:relative; overflow:hidden; }
+  .hello{ background:linear-gradient(135deg,#5b4cff,#9a6bff 60%,#ff8ad6); color:#fff; min-height:190px; }
+  .hello h1{ margin:0 0 6px; font:400 clamp(28px,4vw,40px)/1.1 var(--disp); }
+  .hello p{ margin:0; font-size:15px; opacity:.92; line-height:1.6; max-width:460px; }
+  .hello .av{ position:absolute; right:18px; bottom:-6px; width:150px; height:150px; border-radius:50%; background:rgba(255,255,255,.18); padding:10px; }
+  .hello .av img{ width:100%; height:100%; border-radius:50%; }
+  .hello .row{ display:flex; gap:8px; margin-top:16px; flex-wrap:wrap; }
+  .pill{ display:inline-flex; align-items:center; gap:6px; height:36px; padding:0 14px; border-radius:99px; background:rgba(255,255,255,.2); font-weight:800; font-size:13.5px; }
+  .pill:hover{ background:rgba(255,255,255,.3); }
+  .goal{ background:#fff; border:1px solid var(--line); }
+  .goal h3{ margin:0 0 4px; font-size:16px; display:flex; align-items:center; gap:8px; }
+  .goal .big{ font:700 40px/1 var(--num); color:var(--acc); margin:10px 0 4px; }
+  .goal .sub{ color:var(--sub); font-size:13px; }
+  .dots{ display:flex; gap:6px; margin-top:14px; }
+  .dots i{ flex:1; height:10px; border-radius:6px; background:#e8ebff; } .dots i.on{ background:linear-gradient(90deg,#22b86a,#7be0a0); }
+  .week{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-top:14px; text-align:center; font:700 11px/1 var(--num); color:var(--sub); }
+  .week b{ display:block; height:26px; border-radius:8px; background:#f0f2fc; margin-top:4px; } .week b.on{ background:var(--ok); } .week b.today{ outline:2px solid var(--acc); }
+
+  h2.sec{ margin:30px 0 12px; font:400 24px/1 var(--disp); display:flex; align-items:center; gap:10px; }
+  .chips{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+  .chip{ height:38px; padding:0 16px; border-radius:99px; background:#fff; border:1px solid var(--line); font-weight:800; font-size:14px; color:var(--sub); }
+  .chip.on{ background:var(--acc); border-color:var(--acc); color:#fff; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:16px; }
+  .game{ background:var(--card); border:1px solid var(--line); border-radius:22px; overflow:hidden; display:flex; flex-direction:column; transition:transform .15s, box-shadow .15s; }
+  .game:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(60,60,140,.14); }
+  .game .art{ aspect-ratio:16/10; overflow:hidden; position:relative; }
+  .game .art svg{ width:100%; height:100%; display:block; object-fit:cover; }
+  .game .tag{ position:absolute; left:10px; top:10px; padding:4px 10px; border-radius:99px; font:700 12px/1.2 var(--num); color:#fff; }
+  .game .body{ padding:14px 16px 16px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .game h4{ margin:0; font-size:18px; }
+  .game p{ margin:0; color:var(--sub); font-size:13.5px; line-height:1.5; flex:1; }
+  .game .foot{ display:flex; align-items:center; justify-content:space-between; margin-top:6px; }
+  .game .best{ font:700 13px/1 var(--num); color:var(--gold); }
+  .game .play{ height:38px; padding:0 18px; border-radius:12px; background:var(--acc); color:#fff; font-weight:800; font-size:14px; display:flex; align-items:center; gap:6px; }
+  .game.done .play{ background:var(--ok); }
+
+  .lbwrap{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .box{ background:#fff; border:1px solid var(--line); border-radius:22px; padding:18px; }
+  .box h3{ margin:0 0 12px; font-size:16px; display:flex; align-items:center; justify-content:space-between; gap:8px; }
+  .tabs{ display:flex; gap:6px; flex-wrap:wrap; }
+  .tabs button{ height:30px; padding:0 12px; border-radius:99px; background:#f0f2fc; font-weight:800; font-size:12.5px; color:var(--sub); }
+  .tabs button.on{ background:var(--acc); color:#fff; }
+  .lb .r{ display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:12px; font-size:14px; }
+  .lb .r:nth-child(odd){ background:#f7f8fe; } .lb .r.me{ background:#ebe8ff; }
+  .lb .n{ width:24px; text-align:center; font:700 15px/1 var(--num); color:var(--sub); } .lb .n.g1{ color:#e8a400; } .lb .n.g2{ color:#8a94b0; } .lb .n.g3{ color:#c9773a; }
+  .lb .nm{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:800; }
+  .lb .sc{ font:700 15px/1 var(--num); }
+  .empty{ color:var(--sub); font-size:13.5px; text-align:center; padding:16px 0; }
+  .rec{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+  .rec div{ background:#f7f8fe; border-radius:14px; padding:12px; }
+  .rec small{ display:block; color:var(--sub); font-size:12px; font-weight:700; } .rec b{ display:block; font:700 24px/1.2 var(--num); margin-top:4px; }
+  footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px; line-height:1.7; }
+  footer a{ color:var(--acc); font-weight:800; }
+  @media (max-width:560px){ .hello .av{ display:none; } .hello{ padding-right:24px; } }
+  @media (max-width:820px){ .hero,.lbwrap{ grid-template-columns:1fr; } .hello .av{ width:110px; height:110px; } .tbtn span{ display:none; } .me b,.me .lv{ display:none; } .me{ padding:4px; } .logo small{ display:none; } }
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <a class="logo" href="hub.html"><svg viewBox="0 0 40 40"><rect x="2" y="2" width="36" height="36" rx="11" fill="#5b4cff"/><path d="M10 13c4-2 7-2 10 0v16c-3-2-6-2-10 0z" fill="#fff"/><path d="M30 13c-4-2-7-2-10 0v16c3-2 6-2 10 0z" fill="#e8e4ff"/><path d="M28 6l1.6 3.4 3.6.5-2.6 2.5.6 3.6-3.2-1.7-3.2 1.7.6-3.6-2.6-2.5 3.6-.5z" fill="#ffd23a"/></svg>PlayHub 에듀 <small>교육 허브</small></a>
+  <div class="sp"></div>
+  <a class="tbtn" href="../piblox/hub.html#avatar" title="아바타 꾸미기"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span>아바타 꾸미기</span></a>
+  <a class="tbtn" href="../piblox/hub.html" title="PlayHub 게임 허브"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="11" rx="5"/><path d="M8 11v3M6.5 12.5h3M15.5 12h.01M17.5 14h.01"/></svg><span>게임 허브</span></a>
+  <a class="me" href="../piblox/account.html" title="계정"><img id="meAv" alt=""><div><b id="meName">게스트</b><div class="lv"><span id="meLv">Lv.1</span><i><span id="meXp" style="width:0"></span></i></div></div></a>
+</div></header>
+<main>
+  <section class="hero">
+    <div class="hcard hello">
+      <h1 id="hi">안녕하세요!</h1>
+      <p>놀면서 공부하는 PlayHub 에듀예요. 퀴즈 · 영단어 · 수학 · 국어 · 음악 게임을 하면 <b>레벨(XP)</b>이 오르고, 아바타 · 닉네임 · 친구는 PlayHub 게임 허브와 똑같이 이어져요.</p>
+      <div class="row"><a class="pill" href="../piblox/hub.html#avatar"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.8z"/></svg>아바타 꾸미기</a><a class="pill" href="../piblox/account.html"><svg class="i" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span id="acctTxt">로그인 · 계정</span></a></div>
+      <div class="av"><img id="heroAv" alt=""></div>
+    </div>
+    <div class="hcard goal">
+      <h3><svg class="i" viewBox="0 0 24 24" style="color:#ff5a3a"><path d="M12 2c1 4 6 6 6 12a6 6 0 0 1-12 0c0-3 2-5 3-7 1 2 2 3 3 3 0-3-1-5 0-8z"/></svg>오늘의 공부 목표</h3>
+      <div class="sub">서로 다른 교육 게임 3개를 해 보세요</div>
+      <div class="big" id="goalN">0 / 3</div>
+      <div class="dots" id="goalDots"><i></i><i></i><i></i></div>
+      <div class="sub" style="margin-top:12px"><b id="streak">0</b>일 연속 공부 중</div>
+      <div class="week" id="week"></div>
+    </div>
+  </section>
+
+  <h2 class="sec">교육 게임</h2>
+  <div class="chips" id="chips"></div>
+  <div class="grid" id="games"></div>
+
+  <h2 class="sec">랭킹 · 내 기록</h2>
+  <div class="lbwrap">
+    <div class="box"><h3>랭킹 <div class="tabs" id="lbTabs"></div></h3><div class="lb" id="lb"><div class="empty">불러오는 중…</div></div></div>
+    <div class="box"><h3>내 최고 기록</h3><div class="rec" id="rec"></div></div>
+  </div>
+</main>
+<footer>PlayHub 에듀는 <a href="../piblox/hub.html">PlayHub</a>의 교육 게임만 모은 곳이에요. 계정 · 아바타 · 레벨 · 친구는 PlayHub와 같이 써요.<br>사전: 국립국어원 표준국어대사전 (CC BY-SA 2.0 KR) · an-array-of-english-words (MIT) · 피아노 악보: Mutopia Project</footer>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" crossorigin="anonymous" onerror="window.__mpFail=true"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js" crossorigin="anonymous" onerror="window.__mpFail=true"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js" crossorigin="anonymous" onerror="window.__mpFail=true"></script>
+<script src="multiplayer.js" onerror="window.__mpFail=true"></script>
+<script>
+'use strict';
+const $ = id=>document.getElementById(id);
+const esc = s=>String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+const fmt = n=>{ n=Math.floor(+n||0); for (const [v,s] of [[1e9,'B'],[1e6,'M'],[1e4,'만']]) if (n>=v) return (n/v).toFixed(n/v>=100?0:1).replace(/\.0$/,'')+s; return n.toLocaleString(); };
+const ls = (k,d)=>{ try { const v=localStorage.getItem(k); return v==null?d:JSON.parse(v); } catch(e){ return d; } };
+const ART={"quiz": "<svg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"200\" height=\"200\" fill=\"#4a2fb8\"/><circle cx=\"100\" cy=\"78\" r=\"44\" fill=\"#ffd23a\" stroke=\"#fff\" stroke-width=\"6\"/><path d=\"M106 44L80 84h18l-6 32 28-42h-18z\" fill=\"#fff\" stroke=\"#b07800\" stroke-width=\"3\" stroke-linejoin=\"round\"/><rect x=\"22\" y=\"140\" width=\"34\" height=\"34\" rx=\"7\" fill=\"#e21b3c\"/><rect x=\"62\" y=\"140\" width=\"34\" height=\"34\" rx=\"7\" fill=\"#1368ce\"/><rect x=\"102\" y=\"140\" width=\"34\" height=\"34\" rx=\"7\" fill=\"#d89e00\"/><rect x=\"142\" y=\"140\" width=\"34\" height=\"34\" rx=\"7\" fill=\"#26890c\"/><path d=\"M39 148l9 16H30z\" fill=\"#fff\"/><path d=\"M79 146l10 11-10 11-10-11z\" fill=\"#fff\"/><circle cx=\"119\" cy=\"157\" r=\"9\" fill=\"#fff\"/><rect x=\"151\" y=\"149\" width=\"16\" height=\"16\" fill=\"#fff\"/></svg>", "piano": "<svg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"200\" height=\"200\" fill=\"#1c1828\"/><g shape-rendering=\"crispEdges\" fill=\"#ffd23a\"><rect x=\"30\" y=\"40\" width=\"16\" height=\"16\"/><rect x=\"46\" y=\"56\" width=\"16\" height=\"16\"/><rect x=\"138\" y=\"30\" width=\"16\" height=\"16\"/><rect x=\"154\" y=\"46\" width=\"16\" height=\"16\"/></g><rect x=\"14\" y=\"96\" width=\"172\" height=\"90\" rx=\"8\" fill=\"#fff\"/><g fill=\"#14121c\"><rect x=\"34\" y=\"96\" width=\"14\" height=\"52\" rx=\"3\"/><rect x=\"58\" y=\"96\" width=\"14\" height=\"52\" rx=\"3\"/><rect x=\"106\" y=\"96\" width=\"14\" height=\"52\" rx=\"3\"/><rect x=\"130\" y=\"96\" width=\"14\" height=\"52\" rx=\"3\"/><rect x=\"154\" y=\"96\" width=\"14\" height=\"52\" rx=\"3\"/></g><g stroke=\"#c9c4b8\" stroke-width=\"2\"><path d=\"M38.5 148v38M63 148v38M87.5 96v90M112 148v38M136.5 148v38M161 148v38\"/></g><rect x=\"14\" y=\"96\" width=\"24.5\" height=\"90\" fill=\"#ffd23a\" opacity=\".85\"/></svg>", "wordle": "<svg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"200\" height=\"200\" fill=\"#151a45\"/><g font-family=\"Arial, sans-serif\" font-weight=\"900\" font-size=\"26\" text-anchor=\"middle\" fill=\"#fff\"><rect x=\"14\" y=\"40\" width=\"30\" height=\"30\" rx=\"5\" fill=\"#3a3f6b\"/><text x=\"29\" y=\"64\">V</text><rect x=\"50\" y=\"40\" width=\"30\" height=\"30\" rx=\"5\" fill=\"#e9b730\"/><text x=\"65\" y=\"64\" fill=\"#1d1500\">A</text><rect x=\"86\" y=\"40\" width=\"30\" height=\"30\" rx=\"5\" fill=\"#3a3f6b\"/><text x=\"101\" y=\"64\">P</text><rect x=\"122\" y=\"40\" width=\"30\" height=\"30\" rx=\"5\" fill=\"#2fbf71\"/><text x=\"137\" y=\"64\">I</text><rect x=\"158\" y=\"40\" width=\"30\" height=\"30\" rx=\"5\" fill=\"#2fbf71\"/><text x=\"173\" y=\"64\">D</text><rect x=\"14\" y=\"78\" width=\"30\" height=\"30\" rx=\"5\" fill=\"#2fbf71\"/><text x=\"29\" y=\"102\">L</text><rect x=\"50\" y=\"78\" width=\"30\" height=\"30\" rx=\"5\" fill=\"#2fbf71\"/><text x=\"65\" y=\"102\">U</text><rect x=\"86\" y=\"78\" width=\"30\" height=\"30\" rx=\"5\" fill=\"#2fbf71\"/><text x=\"101\" y=\"102\">C</text><rect x=\"122\" y=\"78\" width=\"30\" height=\"30\" rx=\"5\" fill=\"#2fbf71\"/><text x=\"137\" y=\"102\">I</text><rect x=\"158\" y=\"78\" width=\"30\" height=\"30\" rx=\"5\" fill=\"#2fbf71\"/><text x=\"173\" y=\"102\">D</text></g><g fill=\"none\" stroke=\"rgba(255,255,255,.25)\" stroke-width=\"2\"><rect x=\"15\" y=\"117\" width=\"28\" height=\"28\" rx=\"5\"/><rect x=\"51\" y=\"117\" width=\"28\" height=\"28\" rx=\"5\"/><rect x=\"87\" y=\"117\" width=\"28\" height=\"28\" rx=\"5\"/><rect x=\"123\" y=\"117\" width=\"28\" height=\"28\" rx=\"5\"/><rect x=\"159\" y=\"117\" width=\"28\" height=\"28\" rx=\"5\"/></g><text x=\"100\" y=\"180\" font-family=\"Arial, sans-serif\" font-weight=\"900\" font-size=\"18\" text-anchor=\"middle\" fill=\"#ffe7a6\">명쾌한, 명료한</text></svg>", "math": "<svg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"200\" height=\"200\" fill=\"#0f2f30\"/><rect x=\"18\" y=\"22\" width=\"164\" height=\"10\" rx=\"5\" fill=\"rgba(255,255,255,.12)\"/><rect x=\"18\" y=\"22\" width=\"110\" height=\"10\" rx=\"5\" fill=\"#21d19f\"/><text x=\"100\" y=\"92\" font-family=\"Arial, sans-serif\" font-weight=\"900\" font-size=\"40\" text-anchor=\"middle\" fill=\"#fff\">7 × 8 =</text><rect x=\"62\" y=\"104\" width=\"76\" height=\"44\" rx=\"10\" fill=\"rgba(33,209,159,.2)\" stroke=\"#21d19f\" stroke-width=\"3\"/><text x=\"100\" y=\"138\" font-family=\"Arial, sans-serif\" font-weight=\"900\" font-size=\"32\" text-anchor=\"middle\" fill=\"#21d19f\">56</text><text x=\"160\" y=\"72\" font-family=\"Arial, sans-serif\" font-weight=\"900\" font-size=\"20\" fill=\"#ffd23a\">+20</text><g fill=\"#ffd23a\"><path d=\"M30 170l8-16 8 16z\"/><rect x=\"152\" y=\"158\" width=\"18\" height=\"18\" rx=\"4\" fill=\"#ff8fb1\"/></g><text x=\"100\" y=\"180\" font-family=\"Arial, sans-serif\" font-weight=\"900\" font-size=\"15\" text-anchor=\"middle\" fill=\"#9cc7c0\">12 COMBO</text></svg>"};
+ART.wordchain='<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="#2b2f3a"/><circle cx="100" cy="112" r="62" fill="#8a5a33"/><circle cx="100" cy="112" r="54" fill="#a8743f"/><circle cx="100" cy="112" r="14" fill="#2b2f3a"/><path d="M100 98V82" stroke="#ff5a3a" stroke-width="5" stroke-linecap="round"/><g font-family="Arial" font-weight="900" font-size="22" text-anchor="middle" fill="#fff"><rect x="18" y="22" width="56" height="34" rx="9" fill="#ffd23a"/><text x="46" y="47" fill="#2b2f3a">사과</text><rect x="74" y="34" width="56" height="34" rx="9" fill="#ffffff"/><text x="102" y="59" fill="#2b2f3a">과자</text><rect x="128" y="22" width="56" height="34" rx="9" fill="#5ad0e8"/><text x="156" y="47" fill="#2b2f3a">자동차</text></g><g fill="#5b4cff"><rect x="34" y="150" width="22" height="22" rx="5"/><rect x="144" y="150" width="22" height="22" rx="5"/><rect x="89" y="168" width="22" height="22" rx="5"/></g></svg>';
+const GAMES=[
+  { k:'quiz', href:'quiz.html', t:'퀴즈 러시', sub:'전체', tag:'퀴즈', col:'#6b4cff', d:'김킷처럼 문제를 맞혀야 움직이는 퀴즈 게임. 7가지 모드 · SAT 영단어 무한 모드 · 내가 만든 문제 세트 공유.', best:()=>{ const v=+ls('qr_inf_best',0)||0; return v?'SAT 무한 최고 '+fmt(v)+'점':''; } },
+  { k:'wordle', href:'wordle.html', t:'SAT 워들', sub:'영어', tag:'영어', col:'#2fbf71', d:'다섯 글자 SAT 영단어를 6번 안에 맞혀요. 영어 뜻 · 한국어 뜻 · 발음, 내 단어장, 오늘의 단어와 무한 모드.', best:()=>{ const v=+ls('wd_bestInf',0)||0; return v?'무한 최고 '+fmt(v)+'점':''; } },
+  { k:'math', href:'math.html', t:'수학 블리츠', sub:'수학', tag:'수학', col:'#14a37b', d:'60초 암산 스피드전. 덧셈 · 곱셈 · 나눗셈 · 방정식 · 제곱 · 퍼센트, 콤보와 틀린 문제 다시 보기.', best:()=>{ const b=ls('mb_best',{})||{}; const v=Math.max(0,...Object.values(b).map(x=>+x||0)); return v?'최고 '+fmt(v)+'점':''; } },
+  { k:'wordchain', href:'wordchain.html', t:'의자 끝말잇기', sub:'국어', tag:'국어', col:'#ff6a5a', d:'표준국어대사전 26만 단어로 하는 끝말잇기. AI와 1:1 · 온라인 대전 · 한방단어 찾기 사전.', best:()=>{ const v=+localStorage.getItem('wc_wins')||0; return v?v+'번 우승':''; } },
+  { k:'piano', href:'piano.html', t:'피아노', sub:'음악', tag:'음악', col:'#e8a400', d:'88건반 웹 피아노와 13가지 악기. 클래식 명곡을 처음부터 끝까지 자동 연주로 듣고 따라 쳐 봐요.', best:()=>'' } ];
+const SUBJ=['전체','영어','수학','국어','음악'];
+let subj=ls('edu_subj','전체');
+// ---------- 오늘의 목표 · 연속 기록 ----------
+const dayKey=(d)=>{ d=d||new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); };
+function daily(){ const D=ls('edu_daily',{ day:'', games:[] }); if (D.day!==dayKey()) return { day:dayKey(), games:[] }; return D; }
+function markPlayed(k){ const D=daily(); if (!D.games.includes(k)) D.games.push(k); try { localStorage.setItem('edu_daily',JSON.stringify(D)); } catch(e){}
+  const days=ls('edu_days',[]); if (!days.includes(D.day)){ days.push(D.day); try { localStorage.setItem('edu_days',JSON.stringify(days.slice(-60))); } catch(e){} } }
+function renderGoal(){ const D=daily(), n=Math.min(3,D.games.length); $('goalN').textContent=n+' / 3'+(n>=3?' 완료!':''); [...$('goalDots').children].forEach((d,i)=>d.classList.toggle('on',i<n));
+  const days=new Set(ls('edu_days',[])); let st=0; const d=new Date(); if (!days.has(dayKey(d))) d.setDate(d.getDate()-1); while (days.has(dayKey(d))){ st++; d.setDate(d.getDate()-1); } $('streak').textContent=st;
+  const W='일월화수목금토', t=new Date(); let h=''; for (let i=6;i>=0;i--){ const x=new Date(t); x.setDate(t.getDate()-i); h+='<div>'+W[x.getDay()]+'<b class="'+(days.has(dayKey(x))?'on':'')+(i===0?' today':'')+'"></b></div>'; } $('week').innerHTML=h; }
+// ---------- 게임 카드 ----------
+function renderChips(){ $('chips').innerHTML=SUBJ.map(s=>'<button class="chip'+(s===subj?' on':'')+'" data-s="'+s+'">'+s+'</button>').join(''); }
+function renderGames(){ const D=daily();
+  $('games').innerHTML=GAMES.filter(g=>subj==='전체'||g.sub===subj||g.sub==='전체').map(g=>{ const b=g.best(); const done=D.games.includes(g.k);
+    return '<a class="game'+(done?' done':'')+'" href="'+g.href+'" data-k="'+g.k+'"><div class="art">'+ART[g.k].replace('<svg ','<svg preserveAspectRatio="xMidYMid slice" ')+'<span class="tag" style="background:'+g.col+'">'+g.tag+'</span></div><div class="body"><h4>'+g.t+'</h4><p>'+g.d+'</p><div class="foot"><span class="best">'+esc(b)+'</span><span class="play">'+(done?'오늘 완료':'플레이')+'<svg class="i" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div></a>'; }).join(''); }
+$('chips').onclick=e=>{ const b=e.target.closest('[data-s]'); if (!b) return; subj=b.dataset.s; try { localStorage.setItem('edu_subj',JSON.stringify(subj)); } catch(e){} renderChips(); renderGames(); };
+$('games').addEventListener('click',e=>{ const a=e.target.closest('[data-k]'); if (a) markPlayed(a.dataset.k); });
+// ---------- 내 기록 ----------
+function renderRec(){ const mb=ls('mb_best',{})||{}; const st=ls('wd_stats',{})||{};
+  const items=[['퀴즈 러시 SAT 무한',fmt(+ls('qr_inf_best',0)||0)+'점'],['SAT 워들 무한',fmt(+ls('wd_bestInf',0)||0)+'점'],['워들 연속 정답',(st.best||0)+'일'],['내 영단어장',(ls('wd_notes',[])||[]).length+'개'],
+    ['수학 블리츠 최고',fmt(Math.max(0,...Object.values(mb).map(x=>+x||0)))+'점'],['끝말잇기 우승',(+localStorage.getItem('wc_wins')||0)+'번']];
+  $('rec').innerHTML=items.map(([a,b])=>'<div><small>'+a+'</small><b>'+b+'</b></div>').join(''); }
+// ---------- 랭킹 ----------
+const LBS=[ { c:'quiz_sat_inf', n:'SAT 퀴즈', u:'점' }, { c:'wordle_sat_inf', n:'워들', u:'점' }, { c:'math_mix', n:'수학 (섞기)', u:'점' }, { c:'math_mul', n:'곱셈', u:'점' }, { c:'wordchain_wins', n:'끝말잇기', u:'승' } ];
+let lbSel=0;
+const mpOn=!window.__mpFail && typeof firebase!=='undefined' && window.MP && MP.isConfigured && MP.isConfigured();
+function renderLbTabs(){ $('lbTabs').innerHTML=LBS.map((l,i)=>'<button class="'+(i===lbSel?'on':'')+'" data-i="'+i+'">'+l.n+'</button>').join(''); }
+$('lbTabs').onclick=e=>{ const b=e.target.closest('[data-i]'); if (!b) return; lbSel=+b.dataset.i; renderLbTabs(); loadLb(); };
+function loadLb(){ const L=LBS[lbSel]; if (!mpOn){ $('lb').innerHTML='<div class="empty">오프라인이라 랭킹을 볼 수 없어요</div>'; return; } $('lb').innerHTML='<div class="empty">불러오는 중…</div>';
+  MP.fetchLeaderboard(L.c,{ limit:10, direction:'desc' },arr=>{ if (lbSel!==LBS.indexOf(L)) return; $('lb').innerHTML=!arr.length?'<div class="empty">아직 기록이 없어요. 첫 주인공이 되어 보세요!</div>'
+    :arr.map((r,i)=>'<div class="r'+(r.uid===MP.uid?' me':'')+'"><span class="n'+(i<3?' g'+(i+1):'')+'">'+(i+1)+'</span><span class="nm">'+esc(r.name||'플레이어')+(r.uid===MP.uid?' (나)':'')+'</span><span class="sc">'+fmt(r.score)+L.u+'</span></div>').join(''); }); }
+// ---------- 내 정보 (PlayHub 계정 · 아바타 · 레벨 그대로) ----------
+function renderMe(){ let name='게스트', lo=null, L={ level:1, into:0, need:1 };
+  try { if (window.MP){ name=MP.getDisplayName()||name; lo=MP.getLocalAvatarLoadout&&MP.getLocalAvatarLoadout(); if (MP.getLevel) L=MP.getLevel(); } } catch(e){}
+  let src=''; try { src=MP.headshot2D(lo); } catch(e){}
+  $('meAv').src=src; $('heroAv').src=src; $('meName').textContent=name; $('meLv').textContent='Lv.'+L.level; $('meXp').style.width=Math.round(100*(L.into||0)/Math.max(1,L.need||1))+'%';
+  const h=new Date().getHours(); $('hi').textContent=(h<12?'좋은 아침이에요, ':h<18?'안녕하세요, ':'좋은 저녁이에요, ')+name+'!';
+  let acct=false; try { acct=MP.isLoggedIn&&MP.isLoggedIn(); } catch(e){} $('acctTxt').textContent=acct?'내 계정':'로그인 · 계정'; }
+renderChips(); renderGames(); renderGoal(); renderRec(); renderLbTabs(); renderMe();
+if (mpOn){ try { MP.initAuthOnly(u=>{ if (!u) return; try { MP.setPresence('eduhub',null); } catch(e){}
+    try { MP.fetchAccountAvatarLoadout&&MP.fetchAccountAvatarLoadout(()=>renderMe()); } catch(e){} try { MP.fetchAccountXP&&MP.fetchAccountXP(()=>renderMe()); } catch(e){} renderMe(); loadLb(); }); } catch(e){ loadLb(); } }
+else loadLb();
+if ('serviceWorker' in navigator) addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+addEventListener('pageshow',()=>{ renderGames(); renderGoal(); renderRec(); renderMe(); });
+</script>
+</body>
+</html>
